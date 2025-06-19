@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -euxo pipefail
 
 log() {
   echo -e "\033[1;32m[INFO]\033[0m $*"
@@ -76,6 +76,7 @@ install_ninja_tools() {
 }
 
 main() {
+  echo 'set -o vi' >> ~/.bashrc
   install_injective_release
   install_rust_and_targets
   install_ninja_tools
