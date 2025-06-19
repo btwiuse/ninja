@@ -1,6 +1,14 @@
 {
-  "name": "My Dev Container",
-  "dockerComposeFile": "docker-compose.yml",
-  "service": "app",
-  "workspaceFolder": "/workspace"
+  "name": "Universal Dev Container",
+  "image": "mcr.microsoft.com/devcontainers/universal",
+  "postCreateCommand": "rustup target add wasm32-unknown-unknown",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "rust-lang.rust-analyzer",
+        "ms-python.python",
+        "golang.go"
+      ]
+    }
+  }
 }
