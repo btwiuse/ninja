@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.238.0/containers/docker-existing-dockerfile
 {
-	"name": "Ninja Workspace",
+	"name": "Ninja Workspace (Prebuilt)",
 
 	"image": "btwiuse/arch:ninja",
 
