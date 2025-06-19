@@ -1,6 +1,0 @@
-services:
-  app:
-    image: btwiuse/arch:ninja
-    volumes:
-      - .:/workspace
-    command: sleep infinity
