@@ -1,6 +1,6 @@
 {
   "name": "Universal Dev Container",
-  "image": "mcr.microsoft.com/devcontainers/typescript-node",
+  "image": "mcr.microsoft.com/devcontainers/universal",
   "postCreateCommand": ".devcontainer/setup.sh",
   "customizations": {
     "vscode": {
