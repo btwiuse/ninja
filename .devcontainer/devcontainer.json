@@ -1,7 +1,7 @@
 {
   "name": "Universal Dev Container",
   "image": "mcr.microsoft.com/devcontainers/universal",
-  "postCreateCommand": "rustup target add wasm32-unknown-unknown",
+  "postCreateCommand": ".devcontainer/setup.sh",
   "customizations": {
     "vscode": {
       "extensions": [
