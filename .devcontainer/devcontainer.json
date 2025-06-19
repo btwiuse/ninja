@@ -2,10 +2,5 @@
   "name": "My Dev Container",
   "dockerComposeFile": "docker-compose.yml",
   "service": "app",
-  "workspaceFolder": "/workspace",
-  "forwardPorts": [3000],
-  "settings": {
-    "terminal.integrated.shell.linux": "/bin/bash"
-  },
-  "extensions": ["ms-vscode.cpptools", "dbaeumer.vscode-eslint"]
+  "workspaceFolder": "/workspace"
 }
