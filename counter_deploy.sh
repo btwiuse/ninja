@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -eu
+set -euo pipefail
 
 # https://testnet.explorer.injective.network/account/inj12cgw6fuu6aw34j7qx22l620awtctftlqm9zfgu/transactions/
 ADDRESS=inj12cgw6fuu6aw34j7qx22l620awtctftlqm9zfgu
