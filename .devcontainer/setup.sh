@@ -57,8 +57,7 @@ install_foundry() {
   log "Installing Foundry..."
   curl -L https://foundry.paradigm.xyz | bash -v
   source "$HOME/.bashrc"
-  find ~/.foundry
-  foundryup
+  curl -sL https://raw.githubusercontent.com/foundry-rs/foundry/master/foundryup/foundryup | bash
 }
 
 install_bun() {
