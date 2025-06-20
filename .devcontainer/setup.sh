@@ -55,8 +55,9 @@ install_rust_and_targets() {
 
 install_foundry() {
   log "Installing Foundry..."
-  curl -L https://foundry.paradigm.xyz | bash
+  curl -L https://foundry.paradigm.xyz | bash -v
   source "$HOME/.bashrc"
+  find ~/.foundry
   foundryup
 }
 
