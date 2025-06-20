@@ -53,6 +53,17 @@ install_rust_and_targets() {
   rustup target add wasm32-unknown-unknown
 }
 
+install_ninja_tools() {
+  log "Installing Ninja cargo-bin tools..."
+
+  # Optional: Uncomment these to install from source instead
+  # cargo install cargo-generate --features vendored-openssl
+  # cargo install cargo-run-script
+  # cargo install cosmwasm-check
+
+  curl -sL https://github.com/btwiuse/ninja/releases/download/cargo-bin/cargo-bin.tgz | tar xvzC ~
+}
+
 install_foundry() {
   log "Installing Foundry..."
   curl -L https://foundry.paradigm.xyz | bash -v
@@ -65,15 +76,9 @@ install_bun() {
   npm install -g bun
 }
 
-install_ninja_tools() {
-  log "Installing Ninja cargo-bin tools..."
-
-  # Optional: Uncomment these to install from source instead
-  # cargo install cargo-generate --features vendored-openssl
-  # cargo install cargo-run-script
-  # cargo install cosmwasm-check
-
-  curl -sL https://github.com/btwiuse/ninja/releases/download/cargo-bin/cargo-bin.tgz | tar xvzC ~
+install_yj() {
+  sudo curl -L https://github.com/sclevine/yj/releases/latest/download/yj-linux-amd64 -o /usr/local/bin/yj
+  sudo chmod +x /usr/local/bin/yj
 }
 
 main() {
@@ -83,6 +88,7 @@ main() {
   install_ninja_tools
   install_foundry
   install_bun
+  install_yj
 }
 
 main "$@"
