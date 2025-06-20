@@ -23,7 +23,7 @@ jobs:
       - name: Upload matching files
         uses: actions/upload-artifact@v4
         with:
-          name: counter-artifacts
+          name: counter-release
           path: |
             counter/schema/**
             counter/artifacts/**
