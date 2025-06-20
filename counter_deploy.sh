@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -eo pipefail
+set -eu
 
 # https://testnet.explorer.injective.network/account/inj12cgw6fuu6aw34j7qx22l620awtctftlqm9zfgu/transactions/
 ADDRESS=inj12cgw6fuu6aw34j7qx22l620awtctftlqm9zfgu
@@ -19,8 +19,8 @@ k4o89FU=
 EOF
 }
 
-yes injective | injectived keys import account <(pk) || true
-yes injective | injectived keys list --output json | jq
+yes injective | ( injectived keys import account <(pk) || true )
+yes injective | injectived keys list --output json | jq .
 
 # yes injective | injectived tx wasm store counter/target/wasm32-unknown-unknown/release/counter.wasm \
 # yes injective | injectived tx wasm store /Users/gear/Downloads/counter-artifacts/artifacts/counter.wasm \
@@ -37,7 +37,7 @@ sleep 3
 echo "txhash: $TXHASH"
 
 CODE_ID=$(
-injectived query tx $TXHASH --node=https://testnet.sentry.tm.injective.network:443 | yj -yj | jq .events[] -c | jq .attributes[] -c | grep code_id | jq -r .value | head -n1
+  injectived query tx $TXHASH --node=https://testnet.sentry.tm.injective.network:443 | yj -yj | jq .events[] -c | jq .attributes[] -c | grep code_id | jq -r .value | head -n1
 )
 
 echo "code_id: $CODE_ID"
@@ -54,11 +54,12 @@ TXHASH=$(
   --no-admin \
   --node=https://testnet.sentry.tm.injective.network:443 | yj -yj | jq -r .txhash
 )
+sleep 3
 
 echo "txhash: $TXHASH"
 
 CONTRACT=$(
-injectived query tx $TXHASH --node=https://testnet.sentry.tm.injective.network:443 | yj -yj | jq .events[] -c | jq .attributes[] -c | grep contract_address | jq -r .value | head -n1
+  injectived query tx $TXHASH --node=https://testnet.sentry.tm.injective.network:443 | yj -yj | jq .events[] -c | jq .attributes[] -c | grep contract_address | jq -r .value | head -n1
 )
 
 echo "contract: $CONTRACT"
@@ -66,23 +67,24 @@ echo "contract: $CONTRACT"
 GET_COUNT_QUERY='{"get_count":{}}'
 echo "query: ${GET_COUNT_QUERY}"
 injectived query wasm contract-state smart $CONTRACT "$GET_COUNT_QUERY" \
---node=https://testnet.sentry.tm.injective.network:443 \
---output json | jq .
+  --node=https://testnet.sentry.tm.injective.network:443 \
+  --output json | jq .
 
 INCREMENT='{"increment":{}}'
 echo "execute: ${INCREMENT}"
 TXHASH=$(
-yes injective | injectived tx wasm execute $CONTRACT "$INCREMENT" --from=$ADDRESS \
---chain-id="injective-888" \
---yes --fees=1000000000000000inj --gas=2000000 \
---node=https://testnet.sentry.tm.injective.network:443 \
---output json | jq -r .txhash
+  yes injective | injectived tx wasm execute $CONTRACT "$INCREMENT" --from=$ADDRESS \
+  --chain-id="injective-888" \
+  --yes --fees=1000000000000000inj --gas=2000000 \
+  --node=https://testnet.sentry.tm.injective.network:443 \
+  --output json | jq -r .txhash
 )
+sleep 3
 
 echo "txhash: $TXHASH"
 
 GET_COUNT_QUERY='{"get_count":{}}'
 echo "query: ${GET_COUNT_QUERY}"
 injectived query wasm contract-state smart $CONTRACT "$GET_COUNT_QUERY" \
---node=https://testnet.sentry.tm.injective.network:443 \
---output json | jq .
+  --node=https://testnet.sentry.tm.injective.network:443 \
+  --output json | jq .
