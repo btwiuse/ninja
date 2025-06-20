@@ -17,5 +17,13 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
 
-      - name: Sleep indefinitely
-        run: sleep infinity
+      - name: Build counter
+        run: bash counter.sh
+
+      - name: Upload matching files
+        uses: actions/upload-artifact@v4
+        with:
+          name: counter-artifacts
+          path: |
+            counter/schema/**
+            counter/artifacts/**
