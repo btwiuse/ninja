@@ -1,0 +1,21 @@
+name: CI Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  setup-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run setup script
+        run: bash .devcontainer/setup.sh
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Sleep indefinitely
+        run: sleep infinity
