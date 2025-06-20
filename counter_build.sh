@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 [[ -d counter ]] || {
-  cargo generate --git https://github.com/CosmWasm/cw-template.git --name counter --define minimal=false
+  cargo generate --git https://github.com/CosmWasm/cw-template.git --name counter --define minimal=false # --branch 1.0
   pushd counter
   cargo wasm
   cargo schema

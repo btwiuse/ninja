@@ -18,7 +18,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
 
       - name: Build counter
-        run: bash counter.sh
+        run: bash counter_build.sh
 
       - name: Upload matching files
         uses: actions/upload-artifact@v4
@@ -27,3 +27,6 @@ jobs:
           path: |
             counter/schema/**
             counter/artifacts/**
+
+      - name: Deploy counter
+        run: bash counter_deploy.sh
