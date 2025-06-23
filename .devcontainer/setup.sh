@@ -17,7 +17,6 @@ check_dependency() {
 
 install_injective_release() {
   log "Checking dependencies..."
-  check_dependency gh
   check_dependency unzip
   check_dependency sudo
 
@@ -28,7 +27,7 @@ install_injective_release() {
   pushd "$tmpdir" >/dev/null
 
   log "Downloading latest Injective release..."
-  gh release download --repo InjectiveLabs/injective-chain-releases --pattern "linux-amd64.zip"
+  curl -#L https://github.com/InjectiveLabs/injective-chain-releases/releases/download/v1.15.0-1748457819/linux-amd64.zip > linux-amd64.zip
 
   log "Unzipping archive..."
   unzip linux-amd64.zip
@@ -73,7 +72,7 @@ install_foundry() {
 
 install_bun() {
   log "Installing Bun..."
-  npm install -g bun
+  sudo npm install --force -g bun
 }
 
 install_yj() {
