@@ -52,8 +52,8 @@ install_rust_and_targets() {
   rustup target add wasm32-unknown-unknown
 }
 
-install_ninja_tools() {
-  log "Installing Ninja cargo-bin tools..."
+install_cosmwasm_tools() {
+  log "Installing prebuilt cosmwasm tools..."
 
   # Optional: Uncomment these to install from source instead
   # cargo install cargo-generate --features vendored-openssl
@@ -80,15 +80,16 @@ install_yj() {
   sudo chmod +x /usr/local/bin/yj
 }
 
-main() {
-  echo 'export GITHUB_USER=tintinland' >> ~/.bashrc
-  echo 'set -o vi' >> ~/.bashrc
+install_everything() {
   install_injective_release
   install_rust_and_targets
-  install_ninja_tools
+  install_cosmwasm_tools
   install_foundry
   install_bun
   install_yj
 }
 
-main "$@"
+cat .devcontainer/.bash_history >> ~/.bash_history
+cat .devcontainer/.bashrc >> ~/.bashrc
+
+install_everything "$@"
