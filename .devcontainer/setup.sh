@@ -81,6 +81,7 @@ install_yj() {
 }
 
 main() {
+  echo 'export GITHUB_USER=tintinland' >> ~/.bashrc
   echo 'set -o vi' >> ~/.bashrc
   install_injective_release
   install_rust_and_targets

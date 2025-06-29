@@ -2,9 +2,6 @@
   "name": "Universal Dev Container",
   "image": "mcr.microsoft.com/devcontainers/universal",
   "postCreateCommand": ".devcontainer/setup.sh",
-  "containerEnv": {
-    "GITHUB_USER": "tintinland"
-  },
   "customizations": {
     "vscode": {
       "extensions": [
