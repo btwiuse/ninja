@@ -31,6 +31,11 @@ install_cosmwasm_tools() {
   curl -sL https://github.com/btwiuse/ninja/releases/download/cargo-bin/cargo-bin.tgz | tar xvzC ~
 }
 
+install_dotfiles() {
+  cp .devcontainer/.bash_history ~/.bash_history
+  cp .devcontainer/.bashrc ~/.bashrc
+}
+
 install_foundry() {
   curl -L https://foundry.paradigm.xyz | bash -v
   source "$HOME/.bashrc"
@@ -50,6 +55,7 @@ install_everything() {
   install_injective_release
   install_rust_and_targets
   install_cosmwasm_tools
+  install_dotfiles
   install_foundry
   install_bun
   install_yj

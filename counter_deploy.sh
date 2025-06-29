@@ -19,7 +19,7 @@ k4o89FU=
 EOF
 }
 
-yes injective | ( injectived keys import account <(pk) || true )
+yes injective | ( injectived keys import account <(pk) || true ) &>/dev/null
 yes injective | injectived keys list --output json | jq .
 
 # yes injective | injectived tx wasm store counter/target/wasm32-unknown-unknown/release/counter.wasm \
