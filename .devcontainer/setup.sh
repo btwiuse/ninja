@@ -35,7 +35,7 @@ install_injective_release() {
   log "Installing Injective binaries..."
   sudo install -m 755 injectived /usr/local/bin/
   sudo install -m 755 peggo /usr/local/bin/
-  sudo install -m 644 libwasmvm.x86_64.so /usr/local/lib/
+  sudo install -m 644 libwasmvm.x86_64.so /usr/lib/
   sudo ldconfig
 
   log "Installed: injectived, peggo, libwasmvm.x86_64.so"
