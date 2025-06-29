@@ -33,7 +33,10 @@ install_cosmwasm_tools() {
 
 install_dotfiles() {
   cp .devcontainer/.bash_history ~/.bash_history
-  cp .devcontainer/.bashrc ~/.bashrc
+  history -r
+
+  echo '. $CODESPACE_VSCODE_FOLDER/.devcontainer/.bashrc' >> ~/.bashrc
+  source ~/.bashrc
 }
 
 install_foundry() {
