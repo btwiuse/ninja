@@ -16,6 +16,9 @@ injectived keys list
 injectived keys add account
 injectived keys list --output json | jq .
 
+injectived keys parse inj1qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqe2hm49
+injectived keys parse 0000000000000000000000000000000000000000
+
 cargo generate --git https://github.com/CosmWasm/cw-template.git --name counter --define minimal=false
 cargo generate --git https://github.com/CosmWasm/cw-template.git --name minimal --define minimal=true
 
