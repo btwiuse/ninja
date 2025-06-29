@@ -63,6 +63,14 @@ install_cosmwasm_tools() {
   curl -sL https://github.com/btwiuse/ninja/releases/download/cargo-bin/cargo-bin.tgz | tar xvzC ~
 }
 
+install_dotfiles() {
+  cp .devcontainer/.bash_history ~/.bash_history
+  history -r
+
+  echo '. $CODESPACE_VSCODE_FOLDER/.devcontainer/.bashrc' >> ~/.bashrc
+  source ~/.bashrc
+}
+
 install_foundry() {
   log "Installing Foundry..."
   curl -L https://foundry.paradigm.xyz | bash -v
@@ -89,7 +97,5 @@ install_everything() {
   install_yj
 }
 
-cat .devcontainer/.bash_history >> ~/.bash_history
-cat .devcontainer/.bashrc >> ~/.bashrc
-
 install_everything "$@"
+install_dotfiles

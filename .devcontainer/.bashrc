@@ -58,7 +58,6 @@ install_everything() {
   install_injective_release
   install_rust_and_targets
   install_cosmwasm_tools
-  install_dotfiles
   install_foundry
   install_bun
   install_yj
